@@ -2,27 +2,25 @@
 
 ***************************
 ## Table Of Contents: 
-  - [Introduction](#introdution)
   - [Kubernetes Objects](#kubernetes-objects)
   - [Kubernetes Architecture](#kubernetes-architecture)
   - [Tutorial Resources](#tutorial-resources)
   - [References](#reference)
 
-
 *****************
 
-## Introdution
+## Kubernetes Objects
 
 ![Kube-Docker](https://github.com/jawad1989/Kubernetes101/blob/master/images/kuber-objects.jpeg)
 
- Kubernetes (K8s) is an open-source system for automating deployment, scaling, and management of containerized applications
+* Kubernetes (K8s) is an open-source system for automating deployment, scaling, and management of containerized applications
  It groups containers that make up an application into logical units for easy management and discovery
 
 * Kubernetes contains a number of abstractions that represent the state of your system: deployed containerized applications and workloads, their associated network and disk resources, and other information about what your cluster is doing. These abstractions are represented by objects in the Kubernetes API. See Understanding Kubernetes Objects for more details.
 
   * The basic Kubernetes objects include:
 
-     * Pod
+     *  Pod
      *  Service
      *  Volume
      *  Namespace
@@ -45,14 +43,6 @@
     ## Persistent Volume Claim
      Presistent Volume Claim is the abstruction of the Persistent Volume. Persistent Volume is physical resources of inflastructure. Kubernetes want to hide the detail from developers. Using Persistent Volume Claim, you can hide the physical declaration defined by Persistent Volume or Storage Class. Pod can mount the Volume using Persistent Volume Claim object.
 
-# Building a Kubernetes Cluster with Kubeadm
-
-Install Docker on all three nodes.
-Install Kubeadm, Kubelet, and Kubectl on all three nodes.
-Bootstrap the cluster on the Kube master node.
-Join the two Kube worker nodes to the cluster.
-Set up cluster networking with flannel.
-
 
 # Kubernetes Architecture
 
@@ -70,6 +60,16 @@ Once you deploy kubernetes resources using Yaml file with kubectl command, it se
 
 
 **************
+
+# Building a Kubernetes Cluster with Kubeadm
+
+* Install Docker on all three nodes.
+* Install Kubeadm, Kubelet, and Kubectl on all three nodes.
+* Bootstrap the cluster on the Kube master node.
+* Join the two Kube worker nodes to the cluster.
+* Set up cluster networking with flannel.
+
+
 ## Install Docker on all three nodes.
 
 1. Do the following on all three nodes:
