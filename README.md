@@ -4,9 +4,7 @@
 ## Table Of Contents: 
   - [Kubernetes Objects](#kubernetes-objects)
   - [Kubernetes Architecture](#kubernetes-architecture)
-  - [Tutorial Resources](#tutorial-resources)
-  - [References](#reference)
-
+  - [Tutorial: Building Kubernets Cluster with KUBEADM](#building-a-kubernetes-cluster-with-kubeadm)
 *****************
 
 ## Kubernetes Objects
