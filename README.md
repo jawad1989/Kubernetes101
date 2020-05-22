@@ -12,11 +12,38 @@
 *****************
 
 ## Introdution
- - What is Kubernetes?
- 
+
+![Kube-Docker](https://github.com/jawad1989/Kubernetes101/blob/master/images/kuber-objects.jpeg)
+
  Kubernetes (K8s) is an open-source system for automating deployment, scaling, and management of containerized applications
  It groups containers that make up an application into logical units for easy management and discovery
 
+* Kubernetes contains a number of abstractions that represent the state of your system: deployed containerized applications and workloads, their associated network and disk resources, and other information about what your cluster is doing. These abstractions are represented by objects in the Kubernetes API. See Understanding Kubernetes Objects for more details.
+
+  * The basic Kubernetes objects include:
+
+     * Pod
+     *  Service
+     *  Volume
+     *  Namespace
+     
+     ## Pod
+      A pod (as in a pod of whales or pea pod) is a group of one or more containers (such as Docker containers), with shared storage/network, and a specification for how to run the containers.
+      
+    ## Replica Set
+      A Replica Set ensures that a specified number of pod replicas are running at any one time. In other words, a Replica Set makes sure that a pod or a homogeneous set of pods is always up and available. A Replica set help you to define how many pods are available. If you define replica as three, then one pod die, the Replica Set create a pod to make it three.
+      
+    ## Deployment
+      A Deployment controller provides declarative updates for Pods and ReplicaSets.You describe a desired state in a Deployment object, and the Deployment controller changes the actual state to the desired state at a controlled rate. You can define Deployments to create new ReplicaSets, or to remove existing Deployments and adopt all their resources with new Deployments. A Deployment include Pod(s) and Replica Set. It also help to update the resources when you deploy new version.
+     
+    ## Service
+      A Kubernetes Service is an abstraction which defines a logical set of Pods and a policy by which to access them - sometimes called a micro-service. If you create a pod, you don’t know where it is. Also, a pod might be killed by someone or some shortage of a node. Service provide an endpoint of the pods for you. If you specify “type=LoadBalancer” it actually create an Azure Load Balancer to expose pod with Public IP address.
+      
+    ## Storage Class
+      A StorageClass provides a way for administrators to describe the “classes” of storage they offer. It represent a Persistent Volume like Azure Disk or Azure File or some other storage.
+
+    ## Persistent Volume Claim
+     Presistent Volume Claim is the abstruction of the Persistent Volume. Persistent Volume is physical resources of inflastructure. Kubernetes want to hide the detail from developers. Using Persistent Volume Claim, you can hide the physical declaration defined by Persistent Volume or Storage Class. Pod can mount the Volume using Persistent Volume Claim object.
 
 # Building a Kubernetes Cluster with Kubeadm
 
@@ -25,6 +52,22 @@ Install Kubeadm, Kubelet, and Kubectl on all three nodes.
 Bootstrap the cluster on the Kube master node.
 Join the two Kube worker nodes to the cluster.
 Set up cluster networking with flannel.
+
+
+# Kubernetes Architecture
+
+![Kube-Docker](https://github.com/jawad1989/Kubernetes101/blob/master/images/1_rYlLHqzV3LgEo19J0M904A.jpeg)
+
+
+Kubernetes enable you to use the cluster as if it is signle PC. You don’t need to care the detail of the infrastructure. Just declare the what you want in yaml file, you will get what you want.
+When you use Kubernetes, you can use kubectl command to control the kubernetes cluster. It works with config file. If it is Azure, you can get it by az aks get-credentials command. Once you execute the command, it send request to the kubernetes cluster via Rest API, it create a Pod. A pod can include one or several containers inside it. Kubernetes download the image from DockerHub or Azure Container Registry. The kubernetes cluster has several nodes. However, Kubernetes allocate the pod in some node. Then you need to know which pod is on which node. Kubernetes looks after it for you.
+
+
+![kubernetes-architecture](https://github.com/jawad1989/Kubernetes101/blob/master/images/architecture-kuber.jpeg)
+
+Kubernetes has several Master nodes and Worker nodes. Your containers work on Worker nodes. Worker nodes scales.
+Once you deploy kubernetes resources using Yaml file with kubectl command, it send Post request to the API server. The API server store the data into ectd, which is the distributed key value store. Other resources like Controller Manager, Scheduler, observe the change state of the API server. When you create a some.yaml file with a deployment then kubectl create -f some.yaml It send the yaml data to the API Server. It create a Deployment object on the API Server. Deployment controller detect the change of the deployment, it create ReplicaSet object on the API Server. The Replica Set Controller detect the change then according to the number of replica, create Pod objects. The Scheduler, that is in charge of the pod resource allocation, commnd the kubelet, which reside on every worker nodes, execute docker command and create containers. Every worker nodes have a kube proxy to control the routing. For example, If you create a service object on the API Server, Endpoint Controller create an Endpoint object on the API Server. Kube Proxy watch the API server Endpoint state, then configure iptable to route the endpoint to the container.
+
 
 **************
 ## Install Docker on all three nodes.
