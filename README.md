@@ -1,6 +1,4 @@
-# Kubernetes Concepts
 
-***************************
 ## Table Of Contents: 
   - [Kubernetes Objects](#kubernetes-objects)
   - [Kubernetes Architecture](#kubernetes-architecture)
