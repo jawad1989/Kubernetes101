@@ -71,6 +71,7 @@ Once you deploy kubernetes resources using Yaml file with kubectl command, it se
 1. Do the following on all three nodes:
 ```
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
 sudo add-apt-repository \
 "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
 $(lsb_release -cs) \
@@ -97,9 +98,11 @@ Install the Kubernetes components by running this on all three nodes:
 
 ```
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+
 cat << EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
 deb https://apt.kubernetes.io/ kubernetes-xenial main
 EOF
+
 sudo apt-get update
 sudo apt-get install -y kubelet=1.12.7-00 kubeadm=1.12.7-00 kubectl=1.12.7-00
 sudo apt-mark hold kubelet kubeadm kubectl
@@ -110,7 +113,8 @@ sudo apt-mark hold kubelet kubeadm kubectl
 
 output
 ```
-sudo kubeadm init --pod-network-cidr=10.244.0.0/1
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+
 Your Kubernetes master has initialized successfully!
 
 To start using your cluster, you need to run the following as a regular user:
