@@ -208,3 +208,102 @@ ip-10-0-1-101   Ready    master   85s   v1.12.2
 ip-10-0-1-102   Ready    <none>   63s   v1.12.2
 ip-10-0-1-103   Ready    <none>   60s   v1.12.2
 ```
+
+## Create a pod 
+pods have unique ips and they run on a node, a node can have more then one pod
+
+Create a simple pod running an nginx container:
+```
+cat << EOF | kubectl create -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+EOF
+```
+Get a list of pods and verify that your new nginx pod is in the Running state:
+```
+kubectl get pods
+```
+Get more information about your nginx pod:
+```
+kubectl describe pod nginx
+```
+Delete the pod:
+```
+kubectl delete pod nginx
+```
+
+
+# view nodes
+Get a list of nodes:
+```
+kubectl get nodes
+```
+Get more information about a specific node:
+```
+kubectl describe node $node_name
+```
+
+# Kubernetes Network Example 
+create a deployment with two pods then one more busy box to test network
+
+Create a deployment with two nginx pods:
+```
+cat << EOF | kubectl create -f -
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.15.4
+        ports:
+        - containerPort: 80
+EOF
+```
+Create a busybox pod to use for testing:
+
+```
+cat << EOF | kubectl create -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox
+spec:
+  containers:
+  - name: busybox
+    image: radial/busyboxplus:curl
+    args:
+    - sleep
+    - "1000"
+EOF
+```
+
+Get the IP addresses of your pods:
+
+```
+kubectl get pods -o wide
+```
+
+Get the IP address of one of the nginx pods, then contact that nginx pod from the busybox pod using the nginx pod's IP address:
+```
+kubectl exec busybox -- curl $nginx_pod_ip
+in our case: exec busybox -- curl 10.244.1.10
+```
