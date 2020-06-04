@@ -48,6 +48,11 @@ the component that runs on all of the machines in your cluster and does things l
 ## kubectl:
 the command line util to talk to your cluster.
 
+## basic commands
+Get a list of system pods running in the cluster:
+```
+kubectl get pods -n kube-system
+```
 # Kubernetes Architecture
 
 ![Kube-Docker](https://github.com/jawad1989/Kubernetes101/blob/master/images/1_rYlLHqzV3LgEo19J0M904A.jpeg)
