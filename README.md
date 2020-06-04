@@ -37,44 +37,44 @@
       3. Self Healing: if one of the pods accidently destroys, deployment will imeediately spin up a new one to replace it
   
       Create a deployment:
-```
-cat <<EOF | kubectl create -f -
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: nginx-deployment
-  labels:
-    app: nginx
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: nginx
-  template:
-    metadata:
-      labels:
-        app: nginx
-    spec:
-      containers:
-      - name: nginx
-        image: nginx:1.15.4
-        ports:
-        - containerPort: 80
-EOF
-```
-Get a list of deployments:
-```
-kubectl get deployments
-```
-Get more information about a deployment:
-```
-kubectl describe deployment nginx-deployment
-```
-Get a list of pods:
-```
-kubectl get pods
-```
-You should see two pods created by the deployment.
+      ```
+      cat <<EOF | kubectl create -f -
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: nginx-deployment
+        labels:
+          app: nginx
+      spec:
+        replicas: 2
+        selector:
+          matchLabels:
+            app: nginx
+        template:
+          metadata:
+            labels:
+              app: nginx
+          spec:
+            containers:
+            - name: nginx
+              image: nginx:1.15.4
+              ports:
+              - containerPort: 80
+      EOF
+      ```
+      Get a list of deployments:
+      ```
+      kubectl get deployments
+      ```
+      Get more information about a deployment:
+      ```
+      kubectl describe deployment nginx-deployment
+      ```
+      Get a list of pods:
+      ```
+      kubectl get pods
+      ```
+      You should see two pods created by the deployment.
      
     ## Service
       A Kubernetes Service is an abstraction which defines a logical set of Pods and a policy by which to access them - sometimes called a micro-service. If you create a pod, you don’t know where it is. Also, a pod might be killed by someone or some shortage of a node. Service provide an endpoint of the pods for you. If you specify “type=LoadBalancer” it actually create an Azure Load Balancer to expose pod with Public IP address.
