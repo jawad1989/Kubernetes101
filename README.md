@@ -53,6 +53,9 @@ Get a list of system pods running in the cluster:
 ```
 kubectl get pods -n kube-system
 ```
+
+![arch](https://github.com/jawad1989/Kubernetes101/blob/master/images/kubectl%20-architecture.PNG)
+
 # Kubernetes Architecture
 
 ![Kube-Docker](https://github.com/jawad1989/Kubernetes101/blob/master/images/1_rYlLHqzV3LgEo19J0M904A.jpeg)
