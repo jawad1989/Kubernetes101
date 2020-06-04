@@ -77,7 +77,46 @@
       You should see two pods created by the deployment.
      
     ## Service
-      A Kubernetes Service is an abstraction which defines a logical set of Pods and a policy by which to access them - sometimes called a micro-service. If you create a pod, you don’t know where it is. Also, a pod might be killed by someone or some shortage of a node. Service provide an endpoint of the pods for you. If you specify “type=LoadBalancer” it actually create an Azure Load Balancer to expose pod with Public IP address.
+      A Kubernetes Service is an abstraction which defines a logical set of Pods and a policy by which to access them - sometimes called a micro-service. If you create a pod, you don’t know where it is. Also, a pod might be killed by someone or some shortage of a node. Service provide an endpoint of the pods for you.
+      Service creates a abstraction layer on top of set of replica pods. You can access the service rater than accessing pods directly, so pods come and go, you get un interrupted, dynamic accessto whatever replicas are up at the time.
+      
+      Create a NodePort service on top of your nginx pods:
+      ```
+      cat << EOF | kubectl create -f -
+      kind: Service
+      apiVersion: v1
+      metadata:
+        name: nginx-service
+      spec:
+        selector:
+          app: nginx
+        ports:
+        - protocol: TCP
+          port: 80
+          targetPort: 80
+          nodePort: 30080
+        type: NodePort
+      EOF
+
+      ```
+      Get a list of services in the cluster.
+
+      ```
+      kubectl get svc
+      
+      or 
+      
+      kubectl get service
+      ```
+      You should see your service called nginx-service.
+      Since this is a NodePort service, you should be able to access it using port 30080 on any of your cluster's servers. You can test this with the command:
+
+      ```
+      curl localhost:30080
+
+      ```
+      You should get an HTML response from nginx, you can also access this service from browser using public ip or domain.
+      ![k8s service](https://github.com/jawad1989/Jenkins101/blob/master/images/k8s-service.PNG)
       
     ## Storage Class
       A StorageClass provides a way for administrators to describe the “classes” of storage they offer. It represent a Persistent Volume like Azure Disk or Azure File or some other storage.
