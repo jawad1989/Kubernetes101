@@ -1,3 +1,14 @@
+# Three Big Concepts
+***A Chart*** is a Helm package. It contains all of the resource definitions necessary to run an application, tool, or service inside of a Kubernetes cluster. Think of it like the Kubernetes equivalent of a Homebrew formula, an Apt dpkg, or a Yum RPM file.
+
+***A Repository*** is the place where charts can be collected and shared. It's like Perl's CPAN archive or the Fedora Package Database, but for Kubernetes packages.
+
+***A Release*** is an instance of a chart running in a Kubernetes cluster. One chart can often be installed many times into the same cluster. And each time it is installed, a new release is created. Consider a MySQL chart. If you want two databases running in your cluster, you can install that chart twice. Each one will have its own release, which will in turn have its own release name.
+
+With these concepts in mind, we can now explain Helm like this:
+
+> Helm installs charts into Kubernetes, creating a new release for each installation. And to find new charts, you can search Helm chart repositories.
+
 Helm commands
 ```
 helm init # This command is used to install helm and tiller in the environment that is, by default, described in the configuration used by kubectl
@@ -94,7 +105,20 @@ This is a server capable of serving yaml files over htttp that contains an index
 # Helm Chart
 This is either a packaged archive or a directory that contains all of the data required, in a specific format, for the tiller server to use the Kubernetes API to create the resources described in the chart.
 
+# installing mysql
+```
+$ helm repo update              # Make sure we get the latest list of charts
+$ helm install stable/mysql --generate-name
+Released smiling-penguin
 
+helm show all stable/mysql
+```
+
+# status of a release
+```
+helm status smiling-penguin
+Status: UNINSTALLED
+```
 # helm install wordpress
 
 1. serach hum repo for wordpress
