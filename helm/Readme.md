@@ -70,7 +70,12 @@ un tar a package
 ```
 helm fetch --untar bitnami/wordpress
 ```
+# helm location linux
 
+```
+Operating System	  Cache Path	         Configuration Path	    Data Path
+Linux	              $HOME/.cache/helm	   $HOME/.config/helm	    $HOME/.local/share/helm
+```
 ## templates
 This folder inside of the chart contains the manifest templates that, when combined with the contents of values.yaml and Chart.yaml, create Kuberenetes Manifests that are used to deploy resources.
 
