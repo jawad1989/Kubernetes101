@@ -19,9 +19,7 @@ helm list
 
 helm ls
 
-helm search hub wordpress
 
-helm search repo brigade
 
 helm install happy-panda stable/mariadb
 
@@ -29,7 +27,6 @@ helm repo add gitlab https://charts.gitlab.io/
 
 helm install gitlab/auto-deploy-app --version 0.6.1
 
-helm status happy-panda
 
 helm show values stable/mariadb
 
@@ -60,6 +57,73 @@ helm repo update #This command is used to update the local cache with the curren
 helm inspect
 
 helm history
+```
+
+Search helm hub
+
+```
+helm search hub wordpress
+
+helm search repo brigade
+
+helm search hub # shows you all of the available charts
+```
+
+Search helm repo
+
+shows charts available in your repo locally
+```
+helm search repo
+```
+
+
+Check status of chart
+To keep track of a release's state, or to re-read configuration information
+```
+helm status happy-panda
+
+```
+
+Customizing the Chart Before Installing
+
+
+```
+helm show values stable/mariadb
+Fetched stable/mariadb-0.3.0.tgz to /Users/mattbutcher/Code/Go/src/helm.sh/helm/mariadb-0.3.0.tgz
+## Bitnami MariaDB image version
+## ref: https://hub.docker.com/r/bitnami/mariadb/tags/
+##
+## Default: none
+imageTag: 10.1.14-r3
+
+## Specify a imagePullPolicy
+## Default to 'Always' if imageTag is 'latest', else set to 'IfNotPresent'
+## ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+##
+# imagePullPolicy:
+
+## Specify password for root user
+## ref: https://github.com/bitnami/bitnami-docker-mariadb/blob/master/README.md#setting-the-root-password-on-first-run
+##
+# mariadbRootPassword:
+
+## Create a database user
+## ref: https://github.com/bitnami/bitnami-docker-mariadb/blob/master/README.md#creating-a-database-user-on-first-run
+##
+# mariadbUser:
+# mariadbPassword:
+
+## Create a database
+## ref: https://github.com/bitnami/bitnami-docker-mariadb/blob/master/README.md#creating-a-database-on-first-run
+##
+# mariadbDatabase:
+# 
+```
+
+You can then override any of these settings in a YAML formatted file, and then pass that file during installation.
+```
+$ echo '{mariadbUser: user0, mariadbDatabase: user0db}' > config.yaml
+$ helm install -f config.yaml stable/mariadb --generate-name
 ```
 
 unistall a helm installation
