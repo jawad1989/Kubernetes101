@@ -28,19 +28,13 @@ helm repo add gitlab https://charts.gitlab.io/
 helm install gitlab/auto-deploy-app --version 0.6.1
 
 
-helm show values stable/mariadb
 
-helm get values happy-panda
 
 helm rollback happy-panda 1
 
 helm uninstall happy-panda
 
 helm repo list
-
-helm list --all
-
-helm list
 
 helm repo add dev https://example.com/dev-charts
 
@@ -71,9 +65,19 @@ helm search hub # shows you all of the available charts
 
 #### Search helm repo
 
-shows charts available in your repo locally
+Using helm search repo, you can find the names of the charts in repositories you have already added:
+
 ```
-helm search repo
+$ helm repo add brigade https://brigadecore.github.io/charts
+"brigade" has been added to your repositories
+$ helm search repo brigade
+NAME                        	CHART VERSION	APP VERSION	DESCRIPTION
+brigade/brigade             	1.3.2        	v1.2.1     	Brigade provides event-driven scripting of Kube...
+brigade/brigade-github-app  	0.4.1        	v0.2.1     	The Brigade GitHub App, an advanced gateway for...
+brigade/brigade-github-oauth	0.2.0        	v0.20.0    	The legacy OAuth GitHub Gateway for Brigade
+brigade/brigade-k8s-gateway 	0.1.0        	           	A Helm chart for Kubernetes
+brigade/brigade-project     	1.0.0        	v1.0.0     	Create a Brigade project
+brigade/kashti              	0.4.0        	v0.4.0     	A Helm chart for Kubernetes
 ```
 
 
@@ -82,6 +86,13 @@ To keep track of a release's state, or to re-read configuration information
 ```
 helm status happy-panda
 
+```
+#### helm get values of release
+
+```
+helm show values stable/mariadb
+
+helm get values happy-panda
 ```
 
 #### Customizing the Chart Before Installing
@@ -129,6 +140,18 @@ $ helm install -f config.yaml stable/mariadb --generate-name
 #### unistall a helm installation
 ```
 helm uninstall wordpress-1591377726
+```
+
+###  list all 
+```
+helm list --all
+
+helm list
+```
+
+### list local repo
+```
+helm repo list
 ```
 
 #### Upgrade a release to newer version
