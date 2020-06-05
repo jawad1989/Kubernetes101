@@ -51,6 +51,11 @@ helm inspect
 helm history
 ```
 
+Upgrade a release to newer version
+```
+helm upgrade wordpress-1591378197 bitnami/wordpress
+```
+
 ## templates
 This folder inside of the chart contains the manifest templates that, when combined with the contents of values.yaml and Chart.yaml, create Kuberenetes Manifests that are used to deploy resources.
 
