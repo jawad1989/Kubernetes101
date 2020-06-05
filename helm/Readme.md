@@ -15,36 +15,9 @@ helm init # This command is used to install helm and tiller in the environment t
 
 helm package
 
-helm list
-
-helm ls
-
-
-
-helm install happy-panda stable/mariadb
-
-helm repo add gitlab https://charts.gitlab.io/
-
 helm install gitlab/auto-deploy-app --version 0.6.1
 
-
-
-
 helm rollback happy-panda 1
-
-helm uninstall happy-panda
-
-helm repo list
-
-helm repo add dev https://example.com/dev-charts
-
-helm status, helm get, and helm repo.
-
-helm install
-
-helm dep update
-
-helm dep list
 
 helm repo update #This command is used to update the local cache with the current state of a repository.
 
@@ -53,6 +26,12 @@ helm inspect
 helm history
 ```
 
+#### add a helm repo
+```
+helm repo add dev https://example.com/dev-charts
+
+helm repo add gitlab https://charts.gitlab.io/
+```
 ####  Search helm hub
 
 ```
