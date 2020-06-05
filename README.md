@@ -405,3 +405,76 @@ Get the IP address of one of the nginx pods, then contact that nginx pod from th
 kubectl exec busybox -- curl $nginx_pod_ip
 in our case: exec busybox -- curl 10.244.1.10
 ```
+
+
+# Stans Robot Shop Microservice Example
+
+to delete the previous service as this also uses port `30080`
+```
+kubectl delete svc nginx-service
+```
+Here are the commands used in the demonstration to deploy the Stan's Robot Shop application:
+
+Clone the Git repository:
+```
+cd ~/
+git clone https://github.com/linuxacademy/robot-shop.git
+```
+
+Create a namespace and deploy the application objects to the namespace using the deployment descriptors from the Git repository:
+
+```
+kubectl create namespace robot-shop
+kubectl -n robot-shop create -f ~/robot-shop/K8s/descriptors/
+```
+Get a list of the application's pods and wait for all of them to finish starting up:
+```
+kubectl get pods -n robot-shop -w
+```
+Once all the pods are up, you can access the application in a browser using the public IP of one of your Kubernetes servers and port 30080:
+```
+http://$kube_server_public_ip:30080
+```
+
+# use ful commands
+
+```
+kubectl get pods
+kubectl get pods -o wide
+```
+
+
+You can delete all the pods in a single namespace with this command:
+```
+kubectl delete --all pods --namespace=foo
+```
+
+You can also delete all deployments in namespace which will delete all pods attached with the deployments corresponding to the namespace
+```
+kubectl delete --all deployments --namespace=foo
+```
+
+You can delete all namespaces and every object in every namespace (but not un-namespaced objects, like nodes and some events) with this command:
+```
+kubectl delete --all namespaces
+```
+
+Create name space
+```
+kubectl create namespace robot-shop
+```
+
+create pods in namespace using yml files
+```
+kubectl -n robot-shop create -f ~/robot-shop/K8s/descriptors/
+```
+
+get live status of pods 
+```
+kubectl get pods -n robot-shop -w
+```
+
+delete service
+```
+kubectl delete svc nginx-service
+```
