@@ -409,6 +409,10 @@ in our case: exec busybox -- curl 10.244.1.10
 
 # Stans Robot Shop Microservice Example
 
+this example takes use of many microservices deployed in different technologies like mongo,rabbiqmq, mysql etc and deploys them using simple K8s commads
+
+![K8s](https://github.com/jawad1989/Kubernetes101/blob/master/images/k8s-microservices.PNG)
+
 to delete the previous service as this also uses port `30080`
 ```
 kubectl delete svc nginx-service
@@ -435,6 +439,7 @@ Once all the pods are up, you can access the application in a browser using the 
 ```
 http://$kube_server_public_ip:30080
 ```
+![deployed](https://github.com/jawad1989/Kubernetes101/blob/master/images/k8s%20-%20deployed.PNG)
 
 # use ful commands
 
