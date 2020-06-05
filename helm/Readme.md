@@ -9,7 +9,7 @@ With these concepts in mind, we can now explain Helm like this:
 
 > Helm installs charts into Kubernetes, creating a new release for each installation. And to find new charts, you can search Helm chart repositories.
 
-Helm commands
+#### Helm commands
 ```
 helm init # This command is used to install helm and tiller in the environment that is, by default, described in the configuration used by kubectl
 
@@ -59,7 +59,7 @@ helm inspect
 helm history
 ```
 
-Search helm hub
+####  Search helm hub
 
 ```
 helm search hub wordpress
@@ -69,7 +69,7 @@ helm search repo brigade
 helm search hub # shows you all of the available charts
 ```
 
-Search helm repo
+#### Search helm repo
 
 shows charts available in your repo locally
 ```
@@ -77,14 +77,14 @@ helm search repo
 ```
 
 
-Check status of chart
+#### Check status of chart
 To keep track of a release's state, or to re-read configuration information
 ```
 helm status happy-panda
 
 ```
 
-Customizing the Chart Before Installing
+#### Customizing the Chart Before Installing
 
 
 ```
@@ -126,26 +126,26 @@ $ echo '{mariadbUser: user0, mariadbDatabase: user0db}' > config.yaml
 $ helm install -f config.yaml stable/mariadb --generate-name
 ```
 
-unistall a helm installation
+#### unistall a helm installation
 ```
 helm uninstall wordpress-1591377726
 ```
 
-Upgrade a release to newer version
+#### Upgrade a release to newer version
 ```
 helm upgrade wordpress-1591378197 bitnami/wordpress
 ```
 
-fetch contents of a helm package locally
+#### fetch contents of a helm package locally
 ```
 helm fetch bitnami/wordpress
 ```
 
-un tar a package
+#### un tar a package
 ```
 helm fetch --untar bitnami/wordpress
 ```
-# helm location linux
+####  helm location linux
 
 ```
 Operating System	  Cache Path	         Configuration Path	    Data Path
