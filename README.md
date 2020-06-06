@@ -468,6 +468,31 @@ store-products   ClusterIP   10.104.11.230   <none>        80/TCP    59s
 kubectl exec busybox -- curl -s store-products
 ```
 
+output
+```
+ kubectl exec busybox -- curl -s store-products
+{
+        "Products":[
+                {
+                        "Name":"Apple",
+                        "Price":1000.00,
+                },
+                {
+                        "Name":"Banana",
+                        "Price":5.00,
+                },
+                {
+                        "Name":"Orange",
+                        "Price":1.00,
+                },
+                {
+                        "Name":"Pear",
+                        "Price":0.50,
+                }
+        ]
+
+```
+
 # Stans Robot Shop Microservice Example
 
 this example takes use of many microservices deployed in different technologies like mongo,rabbiqmq, mysql etc and deploys them using simple K8s commads
