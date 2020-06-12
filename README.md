@@ -635,6 +635,14 @@ kubectl delete svc nginx-service
 ```
 
 
+```
+kubectl get cs
+```
+
+```
+kubectl get ep
+```
+
 
 ```
 sudo kubectl get all --namespace=kube-system
