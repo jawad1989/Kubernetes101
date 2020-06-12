@@ -574,3 +574,38 @@ kubectl delete svc nginx-service
 ```
 sudo kubectl get all --namespace=kube-system
 ```
+
+
+
+# Trouble Shoot:
+
+if for some reason the nodes are "NOT READY" apply below steps
+
+
+```
+ubuntu@ip-172-31-59-196:~/.kube/metrics$ kubectl get nodes
+NAME               STATUS     ROLES    AGE   VERSION
+ip-172-31-49-109   NotReady   <none>   31m   v1.12.7
+ip-172-31-55-228   NotReady   <none>   38m   v1.12.7
+ip-172-31-59-196   NotReady   master   39m   v1.12.7
+ip-172-31-62-130   NotReady   <none>   38m   v1.12.7
+
+```
+also check `kubectl describe nodes
+```
+runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:docker: network plugin is not ready: cni config uninitialized
+```
+
+apply below steps
+```
+1) Weave
+
+$ export kubever=$(kubectl version | base64 | tr -d '\n')
+$ kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$kubever"
+After executing those two commands you should see node in status "Ready"
+
+$ kubectl get nodes
+You could also check status
+
+$ kubectl get cs
+```
