@@ -152,11 +152,12 @@ inputs for creation of objects such as deployments, services etc
 * required fields
 
 * Kind = apiVersion:
+  ```
   POD = V1
   Service = V1
   ReplicaSet = apps/v1
   Deployment = apps/v1
-  
+  ```
   * Meta Data
   Form of dictionary
   
