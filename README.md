@@ -27,6 +27,48 @@
     ## Replica Set
       A Replica Set ensures that a specified number of pod replicas are running at any one time. In other words, a Replica Set makes sure that a pod or a homogeneous set of pods is always up and available. A Replica set help you to define how many pods are available. If you define replica as three, then one pod die, the Replica Set create a pod to make it three.
       
+      ### commands:
+      ```
+      kubectl create -f replicaset-definition.yml
+      
+      kubectl get replicaset
+      
+      kubectl delete replicaset myapp-replicaset
+      
+      kubectl replace -f replicaset-definition.yml
+      
+      kubectl scale -replicas=6 -f replica
+      ```
+      
+      replicaset-definition.yml
+      ```
+      apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-replicaset
+  labels:
+    app: myapp
+    type: front-end
+
+spec:
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+        type: front-end
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+
+  replicas: 3
+  selector:
+    matchLabels:
+      type: front-end
+
+      ```
+      
     ## Deployment
       A Deployment controller provides declarative updates for Pods and ReplicaSets.You describe a desired state in a Deployment object, and the Deployment controller changes the actual state to the desired state at a controlled rate. You can define Deployments to create new ReplicaSets, or to remove existing Deployments and adopt all their resources with new Deployments. A Deployment include Pod(s) and Replica Set. It also help to update the resources when you deploy new version.
       
