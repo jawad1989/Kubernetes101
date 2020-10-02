@@ -148,12 +148,12 @@ sudo systemctl status kubelet
 
 # Kubernetes Architecture
 
-Api Server: front end for kubernetes 
-Etcd: distriubuted key value store for data used to manage k8s cluster, logs .
-Scheduler: distributing work across nodes. 
-Controller: brain behind nodes, containers and end points. Decision maker
-Container Run time: underline software to run container e.g. docker
-kubelet: agent to run on each node
+* Api Server: front end for kubernetes 
+* Etcd: distriubuted key value store for data used to manage k8s cluster, logs .
+* Scheduler: distributing work across nodes. 
+* Controller: brain behind nodes, containers and end points. Decision maker
+* Container Run time: underline software to run container e.g. docker
+* kubelet: agent to run on each node
 
 ![Kube-Docker](https://github.com/jawad1989/Kubernetes101/blob/master/images/1_rYlLHqzV3LgEo19J0M904A.jpeg)
 
