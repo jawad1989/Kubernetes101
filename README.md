@@ -145,6 +145,43 @@ sudo systemctl status kubelet
 ```
 
 ![arch](https://github.com/jawad1989/Kubernetes101/blob/master/images/kubectl%20-architecture.PNG)
+# YAML in k8s
+
+inputs for creation of objects such as deployments, services etc
+
+* required fields
+
+* Kind = apiVersion:
+  POD = V1
+  Service = V1
+  ReplicaSet = apps/v1
+  Deployment = apps/v1
+  
+  * Meta Data
+  Form of dictionary
+  
+  * Spec
+  Additional information, containers acts as an array, can give multiple containers here
+  ```
+  spec:
+    containers:
+      - name: nginx-controller
+        image: nginx
+  ```
+  
+sample.yaml
+```
+apiVersion:
+kind:
+metadata:
+
+spec:
+```
+
+* To Run 
+```
+kubectl create -f pod-definition.yaml
+```
 
 # Kubernetes Architecture
 
