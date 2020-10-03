@@ -37,7 +37,9 @@
       
       kubectl replace -f replicaset-definition.yml
       
-      kubectl scale -replicas=6 -f replica
+      kubectl scale --replicas=6 replicaset-definition.yml
+      
+      kubectl scale --replicas=2 replicaset myapp-replicaset
       ```
       
       replicaset-definition.yml
