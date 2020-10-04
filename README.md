@@ -120,6 +120,53 @@
       ```
       You should see two pods created by the deployment.
      
+     Some more exmplaes
+     ```
+     ---
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: httpd-frontend
+    spec:
+      replicas: 3
+      selector:
+        matchLabels:
+          app: myapp
+      template:
+        metadata:
+          labels:
+            app: myapp
+        spec:
+          containers:
+            - name: myapp
+              image: httpd:2.4-alpine
+
+     ```
+
+    ```
+      ---
+      apiVersion: apps/v1
+      kind: deployment
+      metadata:
+        name: deployment-1
+      spec:
+        replicas: 2
+        selector:
+          matchLabels:
+            name: busybox-pod
+        template:
+          metadata:
+            labels:
+              name: busybox-pod
+          spec:
+            containers:
+              - name: busybox-container
+                image: busybox888
+                command:
+                  - sh
+                  - "-c"
+
+      ```
     ## Service
       A Kubernetes Service is an abstraction which defines a logical set of Pods and a policy by which to access them - sometimes called a micro-service. If you create a pod, you don’t know where it is. Also, a pod might be killed by someone or some shortage of a node. Service provide an endpoint of the pods for you.
       Service creates a abstraction layer on top of set of replica pods. You can access the service rater than accessing pods directly, so pods come and go, you get un interrupted, dynamic accessto whatever replicas are up at the time.
