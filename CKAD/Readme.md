@@ -45,7 +45,7 @@ kubectl run custom-nginx --image=nginx --port=8080 --dry-run=client -o yaml
  Cluster IP
  ```
  kubectl expose pod nginx --port=6379 --name redis-service --dry-run=client -o yaml
- 
+ kubectl expose pod httpd --port=80 --name=httpd --dry-run=client -o yaml
  
  or 
  
