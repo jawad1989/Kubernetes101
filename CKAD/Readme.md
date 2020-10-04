@@ -102,6 +102,21 @@ spec:
       command: ["sleep2.0"]
       args: ["10"]
 ```
+
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-sleeper-3
+spec:
+  containers:
+  - name: ubuntu
+    image: ubuntu
+    command:
+      - "sleep"
+      - "1200"
+```
  # Source
  https://kubernetes.io/docs/reference/kubectl/conventions/
  
