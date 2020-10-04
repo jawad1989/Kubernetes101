@@ -1,16 +1,4 @@
-# Scale 
 
-```
-kubectl create deployment webapp --image=kodekloud/webapp-color.
-
-kubectl scale deployment/webapp --replicas=3
-```
-
-# Expose Pod on container Port
-
-```
-kubectl run custom-nginx --image=nginx --port=8080 --dry-run=client -o yaml
-```
 # Imperative Commands
  
  imperative commands can help in getting one time tasks done quickly, as well as generate a definition template easily.
@@ -68,6 +56,29 @@ kubectl run custom-nginx --image=nginx --port=8080 --dry-run=client -o yaml
  kubectl create service nodeport myservice --node-port=31000 --tcp=3050:80
  (This will not use the pods labels as selectors)
  ```
+ 
+ # Scale 
+
+```
+kubectl create deployment webapp --image=kodekloud/webapp-color.
+
+kubectl scale deployment/webapp --replicas=3
+```
+
+# Expose Pod on container Port
+
+```
+kubectl run custom-nginx --image=nginx --port=8080 --dry-run=client -o yaml
+```
+
+# Expose Service and create POD one command
+
+```
+kubectl run httpd --image=httpd:alpine --port=80 --expose
+```
+
+
+
  # Source
  https://kubernetes.io/docs/reference/kubectl/conventions/
  
