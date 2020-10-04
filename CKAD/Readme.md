@@ -78,7 +78,30 @@ kubectl run httpd --image=httpd:alpine --port=80 --expose
 ```
 
 
+# commands and Arguments
 
+Command overwrites ENTRYPOINT of dockerfile, where as args overwrite CMD
+```
+Dockerfile
+
+FROM Ubuntu
+ENTRYPOINT ["sleep"]
+CMD ["5"]
+
+
+pod-defination.yml
+---
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: ubuntu-js
+spec:
+  containers:
+    - name: ubuntu-js
+      image: ubuntu-js
+      command: ["sleep2.0"]
+      args: ["10"]
+```
  # Source
  https://kubernetes.io/docs/reference/kubectl/conventions/
  
