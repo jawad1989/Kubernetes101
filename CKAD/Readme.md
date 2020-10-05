@@ -133,8 +133,95 @@ spec:
     args: ["--color", "green"]
 ```
 
+# ENV Variables 
+docker run -e APP_COLOR=pink myapp
+```
+spec:
+  containers:
+    - name: myapp
+      image: nginx
+      env:
+        - name: APP_COLOR
+          value: pink
 
- # Source
+```
+
+ENV Vs Config Map vs Secrets
+```
+env:
+  - name: APP_COLOR
+    value: pink
+```
+
+ ConfigMap
+ ```
+ env:
+  - name: APP_COLOR
+    valueFrom:
+      configMapKeyRef:
+ ```
+ 
+ Secrets
+ ```
+ env:
+  - name: APP_COLOR
+    valueFrom:
+      secretKeyRef:
+```
+
+# ConfigMap
+
+two steps:
+1) Create ConfigMap
+2) Inject ConfigMap into Pod 
+```
+kubectl create configmap my-app-config --from-literal=APP_COLOR=blue
+
+kubectl create configmap my-app-config --from-literal=APP_COLOR=blue \ 
+--from-literal=APP_MOD=prod
+
+```
+
+from file
+```
+kubectl create configmap my-app-config --from-file=<path-to-file>
+kubectl create configmap my-app-config --from-file=app_config.properties
+
+```
+
+
+declarative
+
+Configmap.yaml
+```
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  APP_COLOR: blue
+  APP_MODE: prod
+```
+Pod Definition
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-app
+  labels:
+    name: my-app
+spect:
+  containers:
+    - name: my-app
+      image: nginx
+      ports:
+        - containerPort: 8080
+      envFrom:
+        - configMapRef:
+            name: app-config
+```
+
+# Source
  https://kubernetes.io/docs/reference/kubectl/conventions/
  
 
