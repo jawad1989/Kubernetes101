@@ -117,6 +117,23 @@ spec:
       - "sleep"
       - "1200"
 ```
+
+update default cmd of blue to green
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webapp-green
+  labels:
+      name: webapp-green
+spec:
+  containers:
+  - name: simple-webapp
+    image: kodekloud/webapp-color
+    args: ["--color", "green"]
+```
+
+
  # Source
  https://kubernetes.io/docs/reference/kubectl/conventions/
  
