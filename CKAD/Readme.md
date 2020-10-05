@@ -159,6 +159,8 @@ env:
   - name: APP_COLOR
     valueFrom:
       configMapKeyRef:
+        name: app-config
+        key: APP_COLOR
  ```
  
  Secrets
@@ -219,6 +221,34 @@ spect:
       envFrom:
         - configMapRef:
             name: app-config
+```
+
+### Single value vs Multiple vs Volumes
+
+Single Env use: 
+```
+env:
+  - name: APP_COLOR
+    valueFrom:
+      configMapKeyRef:
+       name: app-config
+       key: APP_COLOR
+```
+
+MultipleEnv: 
+```
+envFrom:
+  - configMapRef:
+      name: app-config
+```               
+             
+
+Volumes:
+```
+volumes:
+- name: app-config-vol
+  configMap:
+    name: app-config
 ```
 
 # Source
