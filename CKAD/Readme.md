@@ -250,6 +250,16 @@ volumes:
   configMap:
     name: app-config
 ```
+### config Map and Kubernetes
+https://cloud.spring.io/spring-cloud-kubernetes/reference/html/#why-do-you-need-spring-cloud-kubernetes
+https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#create-configmaps-from-files
+
+dependency:
+https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-kubernetes-config
+
+https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4.RELEASE&packaging=jar&jvmVersion=11&groupId=com.example&artifactId=demo-lab-kubernetes-config-spring&name=demo-lab-kubernetes-config-spring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.demo-lab-kubernetes-config-spring&dependencies=web,actuator
+
+
 
 # Source
  https://kubernetes.io/docs/reference/kubectl/conventions/
