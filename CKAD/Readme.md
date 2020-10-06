@@ -251,6 +251,11 @@ volumes:
     name: app-config
 ```
 ### config Map and Kubernetes
+https://agenda.fest.ansible.com/sessions
+
+https://www.youtube.com/watch?v=Jk0N-drqXvY
+
+
 https://cloud.spring.io/spring-cloud-kubernetes/reference/html/#why-do-you-need-spring-cloud-kubernetes
 https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#create-configmaps-from-files
 
@@ -259,6 +264,15 @@ https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starte
 
 https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4.RELEASE&packaging=jar&jvmVersion=11&groupId=com.example&artifactId=demo-lab-kubernetes-config-spring&name=demo-lab-kubernetes-config-spring&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.demo-lab-kubernetes-config-spring&dependencies=web,actuator
 
+https://www.youtube.com/watch?v=jR35JKq5rmc
+
+https://spring.io/blog/2020/04/23/spring-tips-configuration
+
+https://medium.com/@ard333/centralized-configuration-spring-application-on-kubernetes-4fd9e1a31f35
+
+https://www.youtube.com/watch?v=gb1i4WyWNK4
+
+https://cloud.spring.io/spring-cloud-config/reference/html/
 
 
 # Source
