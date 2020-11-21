@@ -1,5 +1,5 @@
-1. Copy file from '/etc/kubernetes/manifests/kube-scheulder.yaml'
-2. update file accordingly
+### 1. Copy file from '/etc/kubernetes/manifests/kube-scheulder.yaml'
+### 2. update file accordingly
 there was a taint applied on kubemaster
 ```
 kubectl describe nodes kubemaster | grep Taint
@@ -64,7 +64,8 @@ spec:
 status: {}
 
 ```
-3. create a pod to test the new schedular
+
+### 3. create a pod to test the new schedular
 ```
 apiVersion: v1
 kind: Pod
@@ -80,7 +81,7 @@ spec:
   schedulerName: my-custom-scheduler  
 ```
 
-4. get events to test pod scheduled with new scheduler
+### 4. get events to test pod scheduled with new scheduler
 ```
 kubectl get events -o wide
 ```
