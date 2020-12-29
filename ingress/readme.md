@@ -1,3 +1,9 @@
+1. deploy demo services and pods
+2. configure metallb
+3. install ingress - kubernetes using helm
+4. create ingress resources
+5. update /etc/hosts
+
 # Demo
 
 Create three deployments and three services
