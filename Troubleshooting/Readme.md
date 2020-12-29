@@ -10,6 +10,9 @@ vagrant@kmaster:~$ kubectl cluster-info
 
 To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 The connection to the server localhost:8080 was refused - did you specify the right host or port?
+
+```
 vagrant@kmaster:~$ sudo cp /etc/kubernetes/admin.conf $HOME/
 vagrant@kmaster:~$ sudo chown $(id -u):$(id -g) $HOME/admin.conf
 vagrant@kmaster:~$ export KUBECONFIG=$HOME/admin.conf
+```
