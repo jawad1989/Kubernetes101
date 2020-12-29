@@ -23,8 +23,18 @@ kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manife
 # On first install only
 kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
 ```
+ Wait for the pods to start
  
-# get your ip range
+ ```
+NAME                              READY   STATUS    RESTARTS   AGE
+pod/controller-65db86ddc6-n9k8x   1/1     Running   0          22m
+pod/nginx-8c9df995d-x4jvs         1/1     Running   0          19m
+pod/speaker-7mgnw                 1/1     Running   0          22m
+pod/speaker-dpswv                 1/1     Running   0          22m
+pod/speaker-lnt5v                 1/1     Running   0          22m
+ ```
+ 
+# Get your ip range
 
 type `ip a` and look for inet, this will show you your allocated IP range in NAT:
 
@@ -35,7 +45,7 @@ type `ip a` and look for inet, this will show you your allocated IP range in NAT
        valid_lft forever preferred_lft forever
     inet6 fe80::a00:27ff:fe37:663c/64 scope link 
 ```
-# create configMap
+# Greate configMap
 
 ```
 apiVersion: v1
