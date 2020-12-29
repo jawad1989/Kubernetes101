@@ -64,24 +64,36 @@ metallb will assign an IP to your ingress service
 
 ```
 apiVersion: networking.k8s.io/v1beta1
-  kind: Ingress
-  metadata:
+kind: Ingress
+metadata:
     annotations:
       kubernetes.io/ingress.class: nginx
-    name: example
-    namespace: foo
-  spec:
-    rules:
-      - host: www.example.com
-        http:
-          paths:
-            - backend:
-                serviceName: exampleService
-                servicePort: 80
-              path: /
-    # This section is only required if TLS is to be enabled for the Ingress
-    tls:
-        - hosts:
-            - www.example.com
-          secretName: example-tls
+      nginx.ingress.kubernetes.io/rewrite-target: /
+    name: nginx-ingress
+    namespace: nginx-demo
+spec:
+  rules:
+  - host: nginx.demo.com
+    http:
+      paths:
+      - path: /red
+        pathType: Prefix
+        backend:
+          serviceName: nginx-red
+          servicePort: 80
+      - path: /
+        pathType: Prefix
+        backend:
+          serviceName: nginx-blue
+          servicePort: 80
+      - path: /green
+        pathType: Prefix
+        backend:
+          serviceName: nginx-green
+          servicePort: 80
+      - path: /blue
+        pathType: Prefix
+        backend:
+          serviceName: nginx-blue
+          servicePort: 80
 ```
