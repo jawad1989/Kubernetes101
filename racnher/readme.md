@@ -1,5 +1,7 @@
 # Installtion
 
+* update /etc/hosts  in all vms
+
 ## 1. Install Docker
   * remove older version
   ```
@@ -23,9 +25,13 @@ https://kubernetes.io/docs/tasks/tools/install-kubectl/
 ## 4. Create SSH keys
 as a non root user
 
-on all Vms, create ssh keys and on master copy the public key of other machine in authorized_keys
+on all Vms, create ssh keys and on master copy the public key(id_rsa.pub) of other machine in authorized_keys
 ```
 ssh-keygen -b 2048 -t rsa -f /home/vagrant/.ssh/id_rsa -N ""
+```
+test:
+```
+ssh vagrant@rkenode01
 ```
 
 ## 5. Swap Off
@@ -60,4 +66,23 @@ chmod 777 /usr/local/bin/kubectl
 ```
 
 ## 7. install cluster
+in /opt/rke
+```
+rke config
+```
+
+* in cluster.yml give clustername
+```
+rke up
+```
+
+set kubeconfig
+```
+export KUBECONFIG=./kube_config_cluster.yml
+```
+
+test
+```
+kubectl get nodes
+```
 ## 8. install rancher
