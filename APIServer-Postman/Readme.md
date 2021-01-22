@@ -47,5 +47,12 @@ kubectl get secret <secret-token> -o json | jq -Mr '.data["ca.crt"]' | base64 -d
 
 ## 7. Add Cert in Postman
 file->seettings->Certificates
-![alt text](http://url/to/img.png)
-![alt text](http://url/to/img.png)
+![Add Ca.crt](https://github.com/jawad1989/Kubernetes101/blob/master/APIServer-Postman/settings.PNG)
+
+## 8. Test API
+you also have to get bearer token and paste it in your postman request
+```
+echo $TOKEN
+```
+![Test API](https://github.com/jawad1989/Kubernetes101/blob/master/APIServer-Postman/demo.PNG)
+
