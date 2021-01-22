@@ -1,3 +1,7 @@
+Kube API Docs:
+https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.20/
+
+
 1. Create SA
 ```
 kubectl create serviceaccount postman
@@ -20,7 +24,7 @@ rules:
 kubectl create rolebinding postman:postman-role --clusterrole postman-role --serviceaccount default:postman
 ```
 
->>To Create an admin user:
+>To Create an admin user:
 ```
 kubectl create clusterrolebinding postman:postman-role --clusterrole cluster-admin --serviceaccount default:postman
 ```
