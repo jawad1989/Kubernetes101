@@ -19,6 +19,11 @@ rules:
 ```
 kubectl create rolebinding postman:postman-role --clusterrole postman-role --serviceaccount default:postman
 ```
+
+>>To Create an admin user:
+```
+kubectl create clusterrolebinding postman:postman-role --clusterrole cluster-admin --serviceaccount default:postman
+```
 For every service account created, there is a secret token. Finally, we must extract the following from the token created for the service account:
 
 API server URL
