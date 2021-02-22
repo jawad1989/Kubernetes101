@@ -1,10 +1,15 @@
 
 ## Create user CSR
+you'll need to create a Key and a signing request:
+
 ```
 openssl genrsa -out user1.key 2048
 openssl req -new -key user1.key -out user1.csr
 ```
+
 ## Approve CSR
+sign the certificate request
+
 ```
 openssl x509 -req -in user1.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out user1.crt -days 500
 ```
