@@ -51,3 +51,17 @@ kubectl config set-credentials user1 --client-certificate=/root/user1.crt --clie
 
 kubectl config set-context user1-context --cluster=kubernetes --namespace=test-namespace --user=user1
 ```
+
+
+# Demo 2: Create user John
+Source: https://kubernetes.io/docs/reference/access-authn-authz/certificate-signing-requests/#create-certificate-request-kubernetes-object
+1) Create Private Key
+2) Creat CSR
+3) Approve CSR
+4) Create Role
+5) Create Role Binding
+6) verify if new user has rights
+   ```
+   kubectl auth can-i update pods
+	 kubectl auth can-i update pods --as=john -n development
+   ```
