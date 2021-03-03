@@ -63,5 +63,5 @@ Source: https://kubernetes.io/docs/reference/access-authn-authz/certificate-sign
 6) verify if new user has rights
    ```
    kubectl auth can-i update pods
-	 kubectl auth can-i update pods --as=john -n development
+   kubectl auth can-i update pods --as=john -n development
    ```
