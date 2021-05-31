@@ -500,6 +500,17 @@ ip-10-0-1-102   Ready    <none>   63s   v1.12.2
 ip-10-0-1-103   Ready    <none>   60s   v1.12.2
 ```
 
+# install rancher local storage - Dynamic
+https://github.com/rancher/local-path-provisioner
+```
+kubectl apply -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/deploy/local-path-storage.yaml
+
+kubectl patch storageclass local-path -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+
+kubectl create -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/examples/pvc/pvc.yaml
+kubectl create -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/examples/pod/pod.yaml
+
+```
 ## Create a pod 
 pods have unique ips and they run on a node, a node can have more then one pod
 
