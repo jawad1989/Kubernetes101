@@ -354,6 +354,25 @@ Add your user to the docker group.
 sudo usermod -aG docker $USER
 ```
 
+# Install cgroup
+https://kubernetes.io/docs/setup/production-environment/container-runtimes/#docker
+```
+sudo mkdir /etc/docker
+cat <<EOF | sudo tee /etc/docker/daemon.json
+{
+  "exec-opts": ["native.cgroupdriver=systemd"],
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "100m"
+  },
+  "storage-driver": "overlay2"
+}
+EOF
+
+sudo systemctl enable docker
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
 Log out and log back in so that your group membership is re-evaluated.
 
 If testing on a virtual machine, it may be necessary to restart the virtual machine for changes to take effect.
