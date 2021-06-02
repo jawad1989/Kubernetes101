@@ -123,6 +123,8 @@ kubectl get nodes
 ## 8. install rancher
 
 ## adding/removing nodes
+remove details from cluster.yml and run below command
+e.g. remove a node from cluster or adding a new one
 ```
 rke up --update-only
 ```
