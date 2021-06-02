@@ -153,3 +153,13 @@ sudo usermod -aG docker $USER
 ```
 docker run -d --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:latest
 ```
+make sure docker container is up 
+```
+docker ps
+```
+
+* enter password
+* confirm the rancher ip/host
+* add cluster
+  * follow instructions, copy the command and run on rke cluster rkemaster. (this will install rancher agent here)
+  * 
