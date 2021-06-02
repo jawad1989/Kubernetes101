@@ -15,6 +15,11 @@
  curl https://releases.rancher.com/install-docker/19.03.sh | sh
     
   ```
+  * add current user to docker group
+  ```
+  sudo groupadd docker
+  sudo usermod -aG docker $USER
+  ```
   * Check version
   ```
   docker version --format '{{.Server.Version}}'
