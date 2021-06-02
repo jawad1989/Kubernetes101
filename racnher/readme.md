@@ -41,6 +41,13 @@ on all Vms, create ssh keys and on master copy the public key(id_rsa.pub) of oth
 ```
 ssh-keygen -b 2048 -t rsa -f /home/vagrant/.ssh/id_rsa -N ""
 ```
+
+update /etc/hosts
+```
+192.168.5.2 rkemaster rkemaster.local
+192.168.5.4 rkenode02
+192.168.5.3 rkenode01
+```
 test:
 ```
 ssh vagrant@rkenode01
