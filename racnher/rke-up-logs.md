@@ -1,3 +1,4 @@
+```
 [+] Cluster Level SSH Private Key Path [~/.ssh/id_rsa]:
 [+] Number of Hosts [1]: 3
 [+] SSH Address of host (1) [none]: 192.168.5.2
@@ -52,3 +53,5 @@
 [+] Cluster Network CIDR [10.42.0.0/16]: 
 [+] Cluster DNS Service IP [10.43.0.10]:
 [+] Add addon manifest URLs or YAML files [no]:
+
+```
