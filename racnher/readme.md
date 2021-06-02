@@ -137,3 +137,19 @@ rke up --config cluster.yml
 
 
 # Setup Rancher
+Two ways to setup
+### 1. install on kubernetes/rke cluster
+### 2. install a single node docker container / outside cluster
+
+1. install docker
+```
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
+
+sudo usermod -aG docker $USER
+```
+
+2. install rancher
+```
+docker run -d --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher:latest
+```
