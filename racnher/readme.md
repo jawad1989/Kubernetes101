@@ -121,3 +121,12 @@ test
 kubectl get nodes
 ```
 ## 8. install rancher
+
+## adding/removing nodes
+```
+rke up --update-only
+```
+## upgrade
+```
+rke up --config cluster.yml
+```
