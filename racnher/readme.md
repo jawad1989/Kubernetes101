@@ -5,7 +5,10 @@
 * update cluster_name in cluster.yml
 * install kubectl, rke on master node
 
+# Setup RKE
+# Setup Rancher
 
+# Setup RKE
 ## 1. Install Docker
   * remove older version
   ```
@@ -120,7 +123,6 @@ test
 ```
 kubectl get nodes
 ```
-## 8. install rancher
 
 ## adding/removing nodes
 remove details from cluster.yml and run below command
@@ -132,3 +134,6 @@ rke up --update-only
 ```
 rke up --config cluster.yml
 ```
+
+
+# Setup Rancher
