@@ -3,6 +3,7 @@
 * update /etc/hosts  in all vms
 * on master make sure to copy id_rsa.pub into authorized_keys
 * update cluster_name in cluster.yml
+* install kubectl, rke on master node
 
 
 ## 1. Install Docker
