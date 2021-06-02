@@ -52,11 +52,13 @@ as root
 sudo swapoff -a
 ```
 ## 6. Install Rke
-https://github.com/rancher/rke/releases/tag/v1.2.1
+Release Page: https://github.com/rancher/rke/releases/
+
+Latest: https://github.com/rancher/rke/releases/tag/v1.2.8
 
 AS ROOT
 ```
-curl -fsSL https://github.com/rancher/rke/releases/download/v1.0.14/rke_linux-amd64 -o rke-amd64
+curl -fsSL https://github.com/rancher/rke/releases/download/v1.2.8/rke_linux-amd64 -o rke
 mv rke-amd64 rke
 
 cp rke /usr/local/bin
