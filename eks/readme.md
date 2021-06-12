@@ -1,3 +1,8 @@
+# Create key pair 
+```
+aws ec2 create-key-pair --region us-east-2 --key-name awseks
+```
+
 # Using aws cli
 https://docs.aws.amazon.com/cli/latest/reference/eks/index.html
 
