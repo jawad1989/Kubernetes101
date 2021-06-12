@@ -1,19 +1,29 @@
-* Install and congigure aws CLI 
+# Using aws cli
+https://docs.aws.amazon.com/cli/latest/reference/eks/index.html
+
+
+# using EKSCTL
+#### * Eksctl docs
+https://eksctl.io/introduction/
+
+#### * Install and congigure aws CLI 
 https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html
 ```
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
+```
 
-
-
+OR 
+```
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
 ./aws/install -i /usr/local/aws-cli -b /usr/local/bin
 aws --version
 ```
-* INSTALL EKSCTL
+
+#### * INSTALL EKSCTL
 
 https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html
 
@@ -22,7 +32,8 @@ curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/d
 sudo mv /tmp/eksctl /usr/local/bin
 eksctl version
 ```
-* Install kubectl
+
+#### * Install kubectl
 https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
 
 ```
@@ -34,7 +45,8 @@ mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/
 echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
 kubectl version --short --client
 ```
-* create managed cluster
+
+#### * create managed cluster
 ```
 eksctl create cluster \
 --name js-cluster \
@@ -47,7 +59,8 @@ eksctl create cluster \
 --nodes-min 3 \
 --managed
 ```
-* create self managed cluster
+
+#### * create self managed cluster
 ```
 eksctl create cluster \
 --name js-cluster-2 \
@@ -58,7 +71,8 @@ eksctl create cluster \
 --ssh-public-key awseks \
 --node-type t2.micro
 ```
-* add new node to self managed cluster
+
+#### * add new node to self managed cluster
 ```
 eksctl create nodegroup \
   --cluster js-cluster-2 \
