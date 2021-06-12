@@ -82,3 +82,9 @@ eksctl create nodegroup \
   --ssh-access \
   --ssh-public-key awseks
 ```
+
+### * Delete Cluster
+
+```
+eksctl delete cluster --name=rke-cluster
+```
